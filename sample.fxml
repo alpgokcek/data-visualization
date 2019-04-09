@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="588.0" prefWidth="1067.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <top>
+        <MenuBar prefHeight="27.0" prefWidth="821.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem fx:id="openFile" mnemonicParsing="false" onAction="#openFile" text="Open…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Generate">
+                    <items>
+                        <MenuItem fx:id="advancedSearch" mnemonicParsing="false" onAction="#showSelectDialog" text="Advanced Graph Generation" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <CheckMenuItem fx:id="graph1" mnemonicParsing="false" onAction="#participationRate" text="Participation Rate" />
+                        <CheckMenuItem fx:id="graph2" mnemonicParsing="false" onAction="#sectionAverage" text="Sections Bar Chart" />
+                        <CheckMenuItem fx:id="graph3" mnemonicParsing="false" onAction="#sectionDistributions" text="Section Distributions" />
+                        <CheckMenuItem fx:id="graph4" mnemonicParsing="false" onAction="#sectionAveragesRadar" text="Section Averages As Radar" />
+                        <CheckMenuItem fx:id="graph5" mnemonicParsing="false" onAction="#learningOutcomes" text="Learning Outcomes as Radar" />
+                        <CheckMenuItem fx:id="graph6" mnemonicParsing="false" onAction="#subSectionAveragesRadar" text="Subsection Averages as Radar" />
+                        <CheckMenuItem fx:id="graph7" mnemonicParsing="false" onAction="#histogram" text="Histogram of Sections" />
+                        <CheckMenuItem fx:id="writtenComments" mnemonicParsing="false" onAction="#showWrittenComments" text="Show Written Comments" />
+                        <CheckMenuItem fx:id="graphShowAll" mnemonicParsing="false" onAction="#showAllGraphs" text="Show All" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="340.0" prefWidth="216.0" style="-fx-background-color: ghostwhite;">
+                    <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e3e9ee" height="38.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="215.0" />
+                        <Text layoutX="16.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Survey Analysis">
+                            <font>
+                                <Font size="16.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="5.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Code: ">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text fx:id="courseCode" layoutX="81.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text layoutX="150.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Section: ">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text fx:id="section" layoutX="198.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text layoutX="5.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year:">
+                            <font>
+                                <Font size="11.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="yearOfSurvey" layoutX="167.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="41.0">
+                            <font>
+                                <Font size="11.0" />
+                            </font>
+                        </Text>
+                        <Text layoutX="6.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Instructor: ">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text fx:id="instructor" layoutX="109.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="99.0">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text layoutX="5.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number Of Students: ">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text fx:id="noOfStudents" layoutX="185.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="20.0">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text layoutX="5.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Participation Rate:  ">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text fx:id="participationRate" layoutX="180.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT">
+                            <font>
+                                <Font size="11.0" />
+                            </font></Text>
+                        <Text layoutX="55.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selected File Info" textAlignment="CENTER" underline="true">
+                            <font>
+                                <Font name="System Bold" size="13.0" />
+                            </font>
+                        </Text>
+                        <TextField id="searchField" fx:id="searchField" layoutY="166.0" onKeyPressed="#search" prefHeight="27.0" prefWidth="216.0" promptText="Search in Files" />
+                        <Line endX="100.0" layoutX="106.0" layoutY="157.0" startX="-100.0" />
+                    </children>
+                </AnchorPane>
+                <ListView fx:id="list" layoutX="-1.0" layoutY="192.0" onMouseClicked="#updateCurrentFile" prefHeight="328.0" prefWidth="217.0" />
+            </children>
+        </AnchorPane>
+    </left>
+    <bottom>
+        <AnchorPane prefHeight="37.0" prefWidth="890.0" style="-fx-background-color: ghostwhite;" BorderPane.alignment="CENTER">
+            <children>
+                <RadioButton fx:id="singleRadio" layoutX="10.0" layoutY="11.0" mnemonicParsing="false" onAction="#updateMenu" selected="true" text="Single File Analysis">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="analysisTypeAnalysis" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="multipleRadio" layoutX="185.0" layoutY="11.0" mnemonicParsing="false" onAction="#updateMenu" text="Multiple File Analysis" toggleGroup="$analysisTypeAnalysis" />
+                <Button fx:id="pdfButton" layoutX="813.0" layoutY="6.0" mnemonicParsing="false" onAction="#exportPDF" text="Export as PDF" />
+                <Line endX="-12.0" endY="8.0" layoutX="375.0" layoutY="24.0" startX="-12.0" startY="-16.0" />
+                <Button fx:id="clearPane" layoutX="635.0" layoutY="5.0" mnemonicParsing="false" onAction="#setClearPane" text="Clear the Pane" />
+                <Button fx:id="clearFiles" layoutX="448.0" layoutY="6.0" mnemonicParsing="false" onAction="#setClearFiles" text="Clear the Files" />
+                <ImageView fx:id="mefLogo" fitHeight="34.0" fitWidth="80.0" layoutX="964.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@meflogo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </bottom>
+    <center>
+        <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <content>
+                <FlowPane fx:id="flowPane" prefHeight="519.0" prefWidth="849.0">
+               <children>
+                  <HBox fx:id="hBoxWrittenComments" prefHeight="366.0" prefWidth="844.0" visible="false">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                     <children>
+                        <ListView fx:id="listView" editable="true" prefHeight="326.0" prefWidth="358.0" />
+                        <VBox fx:id="vBoxWritten" prefHeight="326.0" prefWidth="86.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#listToTArea" prefHeight="27.0" prefWidth="80.0" text="--&gt;">
+                                 <VBox.margin>
+                                    <Insets top="130.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button mnemonicParsing="false" onAction="#tAreaToList" prefHeight="27.0" prefWidth="84.0" text="&lt;--">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="golfTextArea" prefHeight="293.0" prefWidth="384.0" wrapText="true" />
+                     </children>
+                  </HBox>
+               </children></FlowPane>
+            </content>
+        </ScrollPane>
+    </center>
+</BorderPane>
